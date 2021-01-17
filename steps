@@ -1,0 +1,7 @@
+1) npm init => create the package.json file
+2)npm install nodemon =>show the result after save
+3)pm install express
+4)npm install dotenv // read eironment variables
+5)npm install body-parser
+6) npm install morgan
+7)
