@@ -5,7 +5,13 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 router.get(`/`, async (req, res)=>{
-    const productList = await Product.find();//.populate(category);
+    //api/v1/products?category=544454,7847857
+    let filter = {};
+    if(req.query.categories)
+    {
+        filter = {category:req.query.categories.split(',')};
+    }
+    const productList = await Product.find(filter).populate('category');
 
     if(!productList){
         res.status(500).json({success: false})
@@ -118,5 +124,6 @@ router.get('/get/featured/:count', async(req, res) => {
     }
    res.send(products)
 })
+//getting product by category using query parameters
 
 module.exports = router;
