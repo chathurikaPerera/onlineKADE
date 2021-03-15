@@ -4,4 +4,14 @@
 4)npm install dotenv // read eironment variables
 5)npm install body-parser
 6)npm install morgan
-7)
+****
+users model and schema
+post/reister a new user rest API
+hashing the ser password
+get user and list of users excluding password
+update user data with/withpassword
+protecting the api- authentication jwt
+login a user rest api and creating a token
+authentication error handling
+add more secret user information to token 
+get user count rest api
