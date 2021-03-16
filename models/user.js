@@ -55,4 +55,4 @@ userSchema.set('toJSON',{
 
 //create model
 exports.User = mongoose.model('User', userSchema);
-export.userSchema = userSchema;
+exports.userSchema = userSchema;
