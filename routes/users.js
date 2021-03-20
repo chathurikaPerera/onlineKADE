@@ -1,9 +1,11 @@
 const {User} = require('../models/user');
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 router.get(`/`, async (req, res)=>{
-    const userList = await User.find();
+    const userList = await User.find().select('-passwordHash');
+    //const userList = await User.find().select('name email phone');
 
     if(!userList){
         res.status(500).json({success: false})
@@ -11,11 +13,22 @@ router.get(`/`, async (req, res)=>{
     res.send(userList);
 })
 
+//get single user 
+router.get(`/:id`, async (req, res)=>{
+    const user = await User.findById(req.params.id).select('-passwordHash');
+
+    if(!user){
+        res.status(500).json({message: 'This user with the given ID was not found'})
+    }
+    res.status(200).send(user);
+})
+
+
 router.post('/', async(req, res)=>{
     let user = new User({
         name: req.body.name,
         email: req.body.email,
-        passwordHash: req.body.passwordHash,
+        passwordHash: bcrypt.hashSync(req.body.password,10),
         phone: req.body.phone,
         isAdmin: req.body.isAdmin,
         street: req.body.street,
