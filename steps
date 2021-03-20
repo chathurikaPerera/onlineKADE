@@ -10,7 +10,7 @@ post/reister a new user rest API
 hashing the user password
 get user and list of users excluding password
 update user data with/withpassword
-protecting the api- authentication jwt
+protecting the api- authentication jwt(JSON web token)
 login a user rest api and creating a token
 authentication error handling
 add more secret user information to token 
