@@ -57,7 +57,7 @@ router.post('/login', async(req,res) => {
         //this token has expired time
         const token = jwt.sign(
             {
-                userId: user.id
+                userId: user.id 
             },
             secret,
             {expiresIn: '1d'}
